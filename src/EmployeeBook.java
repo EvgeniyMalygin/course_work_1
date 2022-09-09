@@ -1,11 +1,5 @@
 public class EmployeeBook {
 
-    private String fistName;
-    private String lastName;
-    private String middleName;
-    private int numberOfDepartment;
-    private double salary;
-    private int id;
     private static Employee[] employees = new Employee[10];
 
     public void printEmployees() {
@@ -30,8 +24,8 @@ public class EmployeeBook {
     //Метод подсчета средней зарплаты в месяц
     public double averageSalary() {
         int count = 0;
-        for (Employee i : employees) {
-            if (i != null){
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null){
                 count++;
             }
         }
@@ -66,18 +60,18 @@ public class EmployeeBook {
 
     //Метод печати ФИО сотрудников
     public void printFullName() {
-        for (Employee i : employees) {
-            if (i != null) {
-                System.out.println(i.getLastName() + " " + i.getFistName() + " " + i.getMiddleName());
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null) {
+                System.out.println(tempEmployees.getLastName() + " " + tempEmployees.getFistName() + " " + tempEmployees.getMiddleName());
             }
         }
     }
 
     //Индексация зарплаты
     public void indexSalary(double percent) {
-        for (Employee i : employees) {
-            if (i != null){
-                i.setSalary(i.getSalary() + i.getSalary() * percent / 100);
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null){
+                tempEmployees.setSalary(tempEmployees.getSalary() + tempEmployees.getSalary() * percent / 100);
             }
         }
     }
@@ -86,9 +80,9 @@ public class EmployeeBook {
     public Employee minSalaryInDepartment(int number) {
         double tempSalary = employees[0].getSalary();
         int tempIndex = 0;
-        for (Employee j : employees) {
-            if (j != null && j.getNumberOfDepartment() == number) {
-                tempSalary = j.getSalary();
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
+                tempSalary = tempEmployees.getSalary();
                 break;
             }
             tempIndex += 1;
@@ -106,9 +100,9 @@ public class EmployeeBook {
     public Employee maxSalaryInDepartment(int number) {
         double tempSalary = employees[0].getSalary();
         int tempIndex = 0;
-        for (Employee j : employees) {
-            if (j != null && j.getNumberOfDepartment() == number) {
-                tempSalary = j.getSalary();
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
+                tempSalary = tempEmployees.getSalary();
                 break;
             }
             tempIndex += 1;
@@ -125,9 +119,9 @@ public class EmployeeBook {
     //Подсчет зарплаты по отделу
     public double sumSalaryInDepartment(int number) {
         double sum = 0;
-        for (Employee i : employees) {
-            if (i != null && i.getNumberOfDepartment() == number) {
-                sum += i.getSalary();
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
+                sum += tempEmployees.getSalary();
             }
         }
         return sum;
@@ -136,8 +130,8 @@ public class EmployeeBook {
     //Подсчет средней зарплаты по отделу
     public double averageSalaryInDepartment(int number) {
         int count = 0;
-        for (Employee i : employees) {
-            if (i != null && i.getNumberOfDepartment() == number) {
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
                 count++;
             }
         }
@@ -146,39 +140,39 @@ public class EmployeeBook {
 
     //Индексация зарплаты по отделу
     public void indexSalaryInDepartment(double percent, int number) {
-        for (Employee i : employees) {
-            if (i != null && i.getNumberOfDepartment() == number) {
-                i.setSalary(i.getSalary() + i.getSalary() * percent / 100);
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
+                tempEmployees.setSalary(tempEmployees.getSalary() + tempEmployees.getSalary() * percent / 100);
             }
         }
     }
 
     //Печать ФИО сотрудников отдела
     public void printEmployeeInDepartment(int number) {
-        for (Employee i : employees) {
-            if (i != null && i.getNumberOfDepartment() == number) {
-                System.out.println("id: " + i.getIdEmployee() + " ФИО: " + i.getLastName() + " " + i.getFistName() + " "
-                        + i.getMiddleName() + ", зарплата: " + i.getSalary());
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getNumberOfDepartment() == number) {
+                System.out.println("id: " + tempEmployees.getIdEmployee() + " ФИО: " + tempEmployees.getLastName() + " " + tempEmployees.getFistName() + " "
+                        + tempEmployees.getMiddleName() + ", зарплата: " + tempEmployees.getSalary());
             }
         }
     }
 
     //Поиск сотрудников отдела с зарплатой меньше заданной
     public void salaryIsLess(double number) {
-        for (Employee i : employees) {
-            if (i != null && i.getSalary() < number) {
-                System.out.println("id: " + i.getIdEmployee() + " ФИО: " + i.getLastName() + " " + i.getFistName() + " "
-                        + i.getMiddleName() + ", зарплата: " + i.getSalary());
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getSalary() < number) {
+                System.out.println("id: " + tempEmployees.getIdEmployee() + " ФИО: " + tempEmployees.getLastName() + " " + tempEmployees.getFistName() + " "
+                        + tempEmployees.getMiddleName() + ", зарплата: " + tempEmployees.getSalary());
             }
         }
     }
 
     //Поиск сотрудников отдела с зарплатой больше заданной
     public void salaryIsMore(double number) {
-        for (Employee i : employees) {
-            if (i != null && i.getSalary() >= number) {
-                System.out.println("id: " + i.getIdEmployee() + " ФИО: " + i.getLastName() + " " + i.getFistName() + " "
-                        + i.getMiddleName() + ", зарплата: " + i.getSalary());
+        for (Employee tempEmployees : employees) {
+            if (tempEmployees != null && tempEmployees.getSalary() >= number) {
+                System.out.println("id: " + tempEmployees.getIdEmployee() + " ФИО: " + tempEmployees.getLastName() + " " + tempEmployees.getFistName() + " "
+                        + tempEmployees.getMiddleName() + ", зарплата: " + tempEmployees.getSalary());
             }
         }
     }
@@ -199,6 +193,7 @@ public class EmployeeBook {
             if (employees[i] != null && employees[i].getLastName() == lastName && employees[i].getFistName() == fistName &&
                     employees[i].getMiddleName() == middleName && employees[i].getIdEmployee() == id) {
                 employees[i] = null;
+                break;
             }
         }
     }
@@ -208,6 +203,7 @@ public class EmployeeBook {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && employees[i].getIdEmployee() == id) {
                 employees[i] = null;
+                break;
             }
         }
     }
